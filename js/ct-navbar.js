@@ -1,21 +1,23 @@
 searchVisible = 0;
 transparent = true;
 hasTransparent = false;
+let spentTime=new Date();
+let remainingTime=new Date();
 
 function displayRemainingTime(){
     let maxTime=1010;
     let startDate = new Date(2021, 02, 11);
     let msToDays=1000*60*60*24;
 
-    let spentTime=new Date();
-    let remainingTime=new Date();
     let today=new Date();
     let targetDate=new Date();
     targetDate=new Date(startDate.getTime()+(maxTime*msToDays));
 
     remainingTime=(targetDate-today)/msToDays;
     spentTime=(today-startDate)/msToDays;
-    $("h1.card").html(Math.ceil(spentTime));
+    remainingTime=Math.floor(remainingTime);
+    spentTime=Math.ceil(spentTime);
+    $("h1.card").html(remainingTime);
 }
 
 function navBarSearchToggle(){
@@ -40,15 +42,20 @@ function navBarSearchToggle(){
 }
 
 $(document).ready(function(){
+    
     displayRemainingTime();
+    $("h1.card").hover(function(){
+        $("h1.card").html(spentTime).css({"text-decoration":"line-through","text-decoration-style":"wavy"});
+
+    }, function(){
+        $("h1.card").html(remainingTime).css({"text-decoration":"none","text-decoration-style":"none"});
+    });
 
     if($('nav[role="navigation"]').hasClass('navbar-transparent')){
         hasTransparent = true;
     }
     
     navBarSearchToggle();
-    
-
 });
 
 // not necessary
