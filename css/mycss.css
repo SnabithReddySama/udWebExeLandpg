@@ -8,7 +8,7 @@ body{
     position: relative;
 }
 
-#navbar-full, .footer{
+#navbar-full, .footer,.cardy{
     flex:1 100%;
 }
 
@@ -32,4 +32,19 @@ body{
     .nav-search-input{
         margin-top: 2rem;
     }
+}
+
+h1.card {
+    box-shadow: 0 8px 16px 0 rgba(7, 204, 155, 0.575);
+    transition: 0.3s;
+    text-align: center;
+    width: fit-content;
+    font-size: 9rem;
+    font-family:garamond;
+    border-radius: 5px;
+    padding: 3rem 7rem;
+    display: flex;
+    margin: 4rem auto;
+    color: black;
+    background-color: aliceblue;
 }
